@@ -28,17 +28,20 @@ class SearchController extends Controller
         $term = $request->get('term');
         $CarType = $request->get('CarType');
         $Location = $request->get('Location');
+        $Capacity = $request->get('Capacity');
         //$CarType = CarType::orderBy('CarType')->pluck('CarType', 'CarType');
 
-        if ($term || $CarType || $Location){
+        if ($term || $CarType || $Location || $Capacity){
             $products = DB::table('products');            
             $results = $products->where('Title', 'LIKE', '%'. $term .'%')
             ->where('ProductType', '=', $CarType)
             ->where('Province', '=', $Location)
+            ->where('Capacity', '=', $Capacity)
             ->orderBy("DateCreated", "desc")
             //->orWhere('description', 'LIKE', '%'. $searchterm .'%')
             //->orWhere('brand', 'LIKE', '%'. $searchterm .'%')
             ->get();
+            //return $results;
             return view('search.index')->with('results', $results);
         }
         // elseif ($CarType) {

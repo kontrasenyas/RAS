@@ -12,15 +12,18 @@
         <div class="">
             <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#aSearch">Advanced Search</button>
             <div id="aSearch" class="collapse">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     Type of Car: {{ Form::select('CarType', $CarType, Request::get('CarType'),
                                                 ['class' => "form-control"]) }}
                 </div>
-                <div class="form-group col-md-4">
-                    Location: {!!Form::text('Location', Request::get('Location'), ['class' => 'form-control', 'placeholder' => 'What is your location?', 'id' => 'Location', 'style' => 'width: 250px;'])!!}
+                <div class="form-group col-md-3">
+                    Location: {!!Form::text('Location', Request::get('Location'), ['class' => 'form-control', 'placeholder' => 'What is your location?', 'id' => 'Location', ])!!}
                 </div>
-                <div class="form-group col-md-4">
-                    Capacity: {!!Form::text('Capacity', Request::get('Capacity'), ['class' => 'form-control', 'placeholder' => 'How many are you?', 'style' => 'width: 250px;'])!!}
+                <div class="form-group col-md-3">
+                    Capacity: {!!Form::number('Capacity', Request::get('Capacity'), ['class' => 'form-control', 'placeholder' => 'How many are you?', 'min' => '0'])!!}
+                </div>
+                <div class="form-group col-md-3">
+                    Price: {!!Form::number('Capacity', Request::get('Capacity'), ['class' => 'form-control', 'placeholder' => 'What is your budget?', 'min' => '0'])!!}
                 </div>
             </div>
         </div>

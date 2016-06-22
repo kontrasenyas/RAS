@@ -56,6 +56,9 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span>Post your service</a>
+                    </li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
@@ -76,6 +79,7 @@
                 </ul>
             </div>
             @include('partials.search')
+            @include('partials.messages')
         </div>
     </nav>
     <!-- Left bar -->

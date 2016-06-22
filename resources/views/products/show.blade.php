@@ -21,6 +21,9 @@
                             <i>Capacity: </i>{{$product->Capacity}}
                         </div>
                         <div class="text-center">                
+                            <i>Car Type: </i>{{$product->CarType}}
+                        </div>
+                        <div class="text-center">                
                             <i>Brand: </i>{{$product->Brand}}
                         </div>
                         <div class="text-center">                
@@ -33,19 +36,21 @@
                             <i>Views: </i>100
                         </div>              
                     </div>
-                    <div class="panel-body">
-                        <div class="text-center">
-                            <a href="{{route('product.edit', $product->id)}}" class="btn">Edit your Post</a>
+                    @if (Auth::user())
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <a href="{{route('product.edit', $product->id)}}" class="btn">Edit your Post</a>
+                            </div>
+                            <div class="text-center">
+                                {!!Form::open([
+                                    'method'=>'delete',
+                                    'route'=>['product.destroy', $product->id]
+                                    ])!!}                
+                                    {!!Form::submit('Delete')!!}
+                                {!!Form::close()!!}
+                            </div>
                         </div>
-                        <div class="text-center">
-                            {!!Form::open([
-                                'method'=>'delete',
-                                'route'=>['product.destroy', $product->id]
-                                ])!!}                
-                                {!!Form::submit('Delete')!!}
-                            {!!Form::close()!!}
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
