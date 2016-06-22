@@ -10,7 +10,7 @@
                 @endsection
 
                 <div class="panel-body">
-                    Post your product to be rented now!
+                    Post your product to be rented now!!
                 </div>
             </div>
         </div>
