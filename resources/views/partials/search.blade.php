@@ -23,7 +23,7 @@
                     Capacity: {!!Form::number('Capacity', Request::get('Capacity'), ['class' => 'form-control', 'placeholder' => 'How many are you?', 'min' => '0'])!!}
                 </div>
                 <div class="form-group col-md-3">
-                    Price: {!!Form::number('Capacity', Request::get('Capacity'), ['class' => 'form-control', 'placeholder' => 'What is your budget?', 'min' => '0'])!!}
+                    Price: {!!Form::number('Price', Request::get('Price'), ['class' => 'form-control', 'placeholder' => 'What is your budget?', 'min' => '0'])!!}
                 </div>
             </div>
         </div>

@@ -35,7 +35,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>                        
+                        </div>
                         <div class="form-group">                            
                             {!!Form::label('CarType', 'Type of your Car', array('class' => 'control-label'))!!}
                             <div class="{{ $errors->has('CarType') ? ' has-error' : '' }}">

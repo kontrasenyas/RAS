@@ -47,7 +47,7 @@ class ProductController extends Controller
                // return view('products.create')->with('user', $user);
         //}
         else {
-                return view('products.error');
+                return view('products.create');
         }
     }
 
@@ -74,6 +74,7 @@ class ProductController extends Controller
         $product->Capacity = $request->input('Capacity');
         $product->Brand = $request->input('Brand');
         $product->EmailAddress = $user->email;
+        $product->Province = $user->Province;
         $product->Details = $request->input('Details');
         $product->DateCreated = date('Y-m-d H:i:s');
         $product->ProductType = $request->input('CarType');

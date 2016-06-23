@@ -14,7 +14,7 @@
                 <div class="panel-body">
                     @foreach($product as $product)
                         <div class="form-group col-md-12">
-                            <a href="{{ url('product', $product->id) }}">                     
+                            <a href="{{ url('product', $product->id) }}">                   
                                 <img src="/uploads/productPhoto/{{ $product->Photo1 }}" style="width:50px; height:50px; border-radius:50%">
                                     {{$product->Title}} - {{$product->Capacity}}
                             </a><br/>

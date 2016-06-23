@@ -18,10 +18,13 @@
                             <i>Title of your post: </i>{{$product->Title}}
                         </div>
                         <div class="text-center">
+                            <i>Location: </i>{{$product->Province}}
+                        </div>
+                        <div class="text-center">
                             <i>Capacity: </i>{{$product->Capacity}}
                         </div>
                         <div class="text-center">                
-                            <i>Car Type: </i>{{$product->CarType}}
+                            <i>Car Type: </i>{{$product->ProductType}}
                         </div>
                         <div class="text-center">                
                             <i>Brand: </i>{{$product->Brand}}
