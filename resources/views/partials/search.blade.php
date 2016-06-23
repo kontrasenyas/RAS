@@ -5,12 +5,12 @@
             {!!Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...'])!!}
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"></i>
+                    <i class="glyphicon glyphicon-search"></i> Find a Car 
                 </button>
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#aSearch">Advanced Search</button>
             </span>
         </div>
         <div class="">
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#aSearch">Advanced Search</button>
             <div id="aSearch" class="collapse">
                 <div class="form-group col-md-3">
                     Type of Car: {{ Form::select('CarType', $CarType, Request::get('CarType'),
