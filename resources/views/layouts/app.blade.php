@@ -57,7 +57,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span>Post your service</a>
+                        <a href="{{ url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span> Post your Car</a>
                     </li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
@@ -88,10 +88,14 @@
             <div class="row">                
                 <div class="panel panel-default col-md-2" style="padding-right: 0px; padding-left: 0px; !important">
                     <div class="panel-heading">
-                        Left Bar
+                        Browse by Car Type
                     </div>
                     <div class="panel-body">
-                    test
+                        <div class="form-group col-md-12">                           
+                            @foreach($CarType as $CarType_)
+                                <a href="#">{{$CarType_}}</a><br>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>        

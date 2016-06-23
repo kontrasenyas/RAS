@@ -34,9 +34,9 @@ class SearchController extends Controller
         if ($term || $CarType || $Location || $Capacity){
             $products = DB::table('products');            
             $results = $products->where('Title', 'LIKE', '%'. $term .'%')
-            ->where('ProductType', '=', $CarType)
-            ->where('Province', '=', $Location)
-            ->where('Capacity', '=', $Capacity)
+            //->where('ProductType', '=', $CarType)
+            //->where('Province', '=', $Location)
+            //->where('Capacity', '=', $Capacity)
             ->orderBy("DateCreated", "desc")
             //->orWhere('description', 'LIKE', '%'. $searchterm .'%')
             //->orWhere('brand', 'LIKE', '%'. $searchterm .'%')

@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 @section('panelHeading')
-                    Post your Product
+                    Post your Car
                 @endsection
 
                 <div class="panel-body">

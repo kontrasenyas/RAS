@@ -7,23 +7,15 @@
         <div class="col-md-8 col-md-offset-1">
             <div class="panel panel-default">
                 @section('panelHeading')
-                    Search
+                    Post your Car Now
                 @endsection
 
                 <div class="panel-body">
-                {!!Form::open(['route' => 'product.index', 'method' => 'GET', 'class' => '', 'role' => 'search'])!!}
-                    
-                        <div class="input-group">
-                            {!!Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...'])!!}                        
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                                <i class="glyphicon glyphicon-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                {!!Form::close()!!}
+                    Share your Car to others! <br/>
+                    <a href="{{ url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span> Post your Car</a>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>

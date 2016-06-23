@@ -9,7 +9,7 @@
                     Product
                 @endsection
                 <div class="panel-body center-block text-center">
-                    <a href="{{ url('product/create') }}">Post your product</a>
+                    <a href="{{ url('product/create') }}">Post your Car</a>
                 </div>
                 <div class="panel-body">
                     @foreach($product as $product)

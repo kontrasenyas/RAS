@@ -16,6 +16,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         $this->composeSearch();
         $this->carTypeForProduct();
+        $this->carTypeForLayout();
     }
 
     /**
@@ -40,6 +41,15 @@ class ViewComposerServiceProvider extends ServiceProvider
     private function carTypeForProduct()
     {
         view()->composer('products.create', function($view)
+
+        {
+            $CarType = CarType::orderBy('CarType')->pluck('CarType', 'CarType');
+            $view->with('CarType', $CarType);
+        });
+    }
+    private function carTypeForLayout()
+    {
+        view()->composer('layouts.app', function($view)
 
         {
             $CarType = CarType::orderBy('CarType')->pluck('CarType', 'CarType');
