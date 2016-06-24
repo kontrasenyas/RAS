@@ -144,5 +144,12 @@
             });
         });
     </script>
+    <script>
+        $(function() {
+            if ({{ Request::old('autoOpenModal', 'false') }}) {
+                $('#BookCar').modal('show');
+            }
+        });
+    </script>
 </body>
 </html>
