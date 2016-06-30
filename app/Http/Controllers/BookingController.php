@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests;
+use App\UUID;
 
 class BookingController extends Controller
 {
@@ -38,8 +39,8 @@ class BookingController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'ContactName' => 'required',
-            'ContactNo' => 'required',
-        ]);
+            'ContactNo' => 'required|max:11',
+        ]);      
 
         if ($validator->fails()) {
             $request['autoOpenModal'] = 'true';
@@ -47,7 +48,11 @@ class BookingController extends Controller
                     ->back()
                     ->withErrors($validator)
                     ->withInput();
-        }     
+        }
+        $ContactNo = $request->ContactNo;
+        $code = new UUID($ContactNo . '_');
+
+        return $code; // Will return something like secret_53ef6b2ae4da1
     }
 
     /**
