@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests;
 use App\UUID;
+use App\Booking;
 
 class BookingController extends Controller
 {
@@ -37,6 +38,8 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        $booking = new Booking();
+
         $validator = Validator::make($request->all(), [
             'ContactName' => 'required',
             'ContactNo' => 'required|max:11',
@@ -51,8 +54,12 @@ class BookingController extends Controller
         }
         $ContactNo = $request->ContactNo;
         $code = new UUID($ContactNo . '_');
+       
+        $booking->ContactName = $request->input('ContactName');
+        $booking->ContactNo = $request->input('ContactNo');
+        $booking->Code = $code->uuid;
 
-        return $code; // Will return something like secret_53ef6b2ae4da1
+        $booking->save();
     }
 
     /**
