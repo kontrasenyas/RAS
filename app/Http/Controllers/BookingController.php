@@ -9,6 +9,7 @@ use App\UUID;
 use App\Booking;
 use App\Product;
 use App\BookingNotification;
+use Session;
 
 class BookingController extends Controller
 {
@@ -68,10 +69,13 @@ class BookingController extends Controller
         $booking->Code = $code->uuid;
         $booking->ProductID = $request->product_id;
         $booking->DateCreated = date('Y-m-d H:i:s');
-
+        
         $bookingNotification->Code = $code->uuid;
 
         $booking->save();
+
+        Session::flash('success', 'You successfully booked this car!');
+        return redirect()->action('ProductController@show', ['id' => $booking->ProductID]);
     }
 
     /**
