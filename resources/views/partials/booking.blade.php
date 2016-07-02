@@ -32,6 +32,8 @@
                                 @endif
                             </div>
                         </div>
+                        <input type="hidden" name="product_id" value="{{$product->id}}" />
+                        
                 </div>
                 <div class="modal-footer">
                     {!!Form::submit('Send', ['class' => "btn btn-primary"])!!}

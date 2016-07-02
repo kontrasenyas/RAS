@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Requests;
 use App\UUID;
 use App\Booking;
+use App\Product;
 
 class BookingController extends Controller
 {
@@ -58,6 +59,7 @@ class BookingController extends Controller
         $booking->ContactName = $request->input('ContactName');
         $booking->ContactNo = $request->input('ContactNo');
         $booking->Code = $code->uuid;
+        $booking->ProductID = $request->product_id;
 
         $booking->save();
     }

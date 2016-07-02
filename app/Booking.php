@@ -12,7 +12,7 @@ class Booking extends Model
     // 'ProductName', 
     // 'Capacity'
     // ];
-    protected $fillable = array('ContactName', 'ContactNo', 'Code');
+    protected $fillable = array('ContactName', 'ContactNo', 'Code', 'ProductID');
 
     public $timestamps = false;
 }

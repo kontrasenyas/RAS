@@ -31,3 +31,5 @@ Route::resource('booking', 'BookingController');
 // Route::get('search/autocomplete', ['uses' => 'SearchController@autocomplete', 'as' => 'search.autocomplete']);
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::resource('search', 'SearchController');
+
+Route::post('product/{id}/booking', 'BookingController@store');
