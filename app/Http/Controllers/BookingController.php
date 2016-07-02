@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\UUID;
 use App\Booking;
 use App\Product;
+use App\BookingNotification;
 
 class BookingController extends Controller
 {
@@ -40,11 +41,17 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $booking = new Booking();
+        $bookingNotification = new BookingNotification;
+        //$ContactName = ltrim($request->input('ContactName'), ' ');
+        //$ContactNo = $request->input('ContactNo');
+
+        //$string = str_replace(' ', '', $ContactName);
+        //$str = ltrim($ContactNo, '0');
 
         $validator = Validator::make($request->all(), [
             'ContactName' => 'required',
-            'ContactNo' => 'required|max:11',
-        ]);      
+            'ContactNo' => 'required|max:11|unique:bookings',
+        ]);
 
         if ($validator->fails()) {
             $request['autoOpenModal'] = 'true';
@@ -55,11 +62,14 @@ class BookingController extends Controller
         }
         $ContactNo = $request->ContactNo;
         $code = new UUID($ContactNo . '_');
-       
+        //Bookings Table
         $booking->ContactName = $request->input('ContactName');
         $booking->ContactNo = $request->input('ContactNo');
         $booking->Code = $code->uuid;
         $booking->ProductID = $request->product_id;
+        $booking->DateCreated = date('Y-m-d H:i:s');
+
+        $bookingNotification->Code = $code->uuid;
 
         $booking->save();
     }

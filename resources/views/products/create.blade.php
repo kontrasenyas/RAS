@@ -51,9 +51,9 @@
                         <div class="form-group"> 
                             {!!Form::label('capacity', 'Capacity of your Car', array('class' => 'control-label'))!!}
                             <div class="{{ $errors->has('Title') ? ' has-error' : '' }}">
-                                {!!Form::number('Capacity', null,
+                                {!!Form::number('Capacity', 1,
                                                 ['class' => "form-control",
-                                                'min' => '0',
+                                                'min' => '1',
                                                 'max' => '1000',
                                                 'style' => 'width: 100px;'
                                                 ])!!}

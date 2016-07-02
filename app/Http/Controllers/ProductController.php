@@ -70,15 +70,14 @@ class ProductController extends Controller
         $product = new Product;
         $user = $request->user();
 
-        $product->Title = $request->input('Title');
-        $product->Capacity = $request->input('Capacity');
-        $product->Brand = $request->input('Brand');
+        $product->Title = ltrim($request->input('Title'), ' ');
+        $product->Capacity = ltrim($request->input('Capacity'), '0');
+        $product->Brand = ltrim($request->input('Brand'), ' ');
         $product->EmailAddress = $user->email;
         $product->Province = $user->Province;
         $product->Details = $request->input('Details');
         $product->DateCreated = date('Y-m-d H:i:s');
         $product->ProductType = $request->input('CarType');
-        
 
         if ($request->hasFile('Photo1')) {
             $photo1 = $request->file('Photo1');
