@@ -10,6 +10,8 @@ use App\CarType;
 use Image;
 use Auth;
 use DB;
+use Session;
+
 class ProductController extends Controller
 {
     /**
@@ -45,8 +47,8 @@ class ProductController extends Controller
                // return view('products.create')->with('user', $user);
         //}
         else {
-                return view('products.error');
-        }        
+                return view('products.create');
+        }
     }
 
     /**
@@ -72,6 +74,7 @@ class ProductController extends Controller
         $product->Capacity = $request->input('Capacity');
         $product->Brand = $request->input('Brand');
         $product->EmailAddress = $user->email;
+        $product->Province = $user->Province;
         $product->Details = $request->input('Details');
         $product->DateCreated = date('Y-m-d H:i:s');
         $product->ProductType = $request->input('CarType');
@@ -91,6 +94,8 @@ class ProductController extends Controller
         // }
         //return $product;
         $product->save();
+
+        Session::flash('success', 'Your car was successfully posted!');
         /*
         $inputs = $request->all();
         $product = Product::Create($inputs);
@@ -110,7 +115,7 @@ class ProductController extends Controller
     {
         $product =  Product::find($id);
 
-         return view('products.show')->with('product', $product);
+        return view('products.show')->with('product', $product);
     }
 
     /**
@@ -122,9 +127,15 @@ class ProductController extends Controller
     public function edit(Request $request, $id)
     {
         $product = Product::find($id);
-
+        $user = $request->user();
+        
+        if (Auth::check()) {
+            return view('products.edit', compact('product', $product));
+        }
+        else {
+                return view('products.error');
+        }
         //return view('product.edit')->with('product', $product);
-        return view('products.edit', compact('product', $product));
     }
 
     /**

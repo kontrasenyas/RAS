@@ -55,12 +55,15 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">                    
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+                        <li>
+                            <a href="{{ url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span> Post your Car</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;"">
                                 <img src="/uploads/avatars/{{ Auth::user()->Photo }}" style="width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%">
@@ -76,6 +79,7 @@
                 </ul>
             </div>
             @include('partials.search')
+            @include('partials.messages')
         </div>
     </nav>
     <!-- Left bar -->
@@ -84,10 +88,14 @@
             <div class="row">                
                 <div class="panel panel-default col-md-2" style="padding-right: 0px; padding-left: 0px; !important">
                     <div class="panel-heading">
-                        Left Bar
+                        Browse by Car Type
                     </div>
                     <div class="panel-body">
-                    test
+                        <div class="form-group col-md-12">                           
+                            @foreach($CarType as $CarType_)
+                                <a href="#">{{$CarType_}}</a><br>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>        
@@ -134,6 +142,13 @@
                     }, 0);
                 }
             });
+        });
+    </script>
+    <script>
+        $(function() {
+            if ({{ Request::old('autoOpenModal', 'false') }}) {
+                $('#BookCar').modal('show');
+            }
         });
     </script>
 </body>

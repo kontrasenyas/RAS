@@ -11,11 +11,11 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('search.index');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', 'SearchController@index');
+//Route::get('/', 'SearchController@index');
 
 Route::auth();
 
@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@index');
 Route::resource('profile', 'UserController');
 
 Route::resource('product', 'ProductController');
+Route::resource('booking', 'BookingController');
 // Route::get('search/autocomplete', ['uses' => 'SearchController@autocomplete', 'as' => 'search.autocomplete']);
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::resource('search', 'SearchController');

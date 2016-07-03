@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 @section('panelHeading')
-                    Post your Product
+                    Post your Car
                 @endsection
 
                 <div class="panel-body">
@@ -36,6 +36,18 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group">                            
+                            {!!Form::label('CarType', 'Type of your Car', array('class' => 'control-label'))!!}
+                            <div class="{{ $errors->has('CarType') ? ' has-error' : '' }}">
+                                {{ Form::select('CarType', $CarType, null,
+                                                ['class' => "form-control"]) }}
+                                    @if ($errors->has('CarType'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('CarType') }}</strong>
+                                        </span>
+                                    @endif
+                            </div>
+                        </div>
                         <div class="form-group"> 
                             {!!Form::label('capacity', 'Capacity of your Car', array('class' => 'control-label'))!!}
                             <div class="{{ $errors->has('Title') ? ' has-error' : '' }}">
@@ -48,18 +60,6 @@
                                     @if ($errors->has('Capacity'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('Capacity') }}</strong>
-                                        </span>
-                                    @endif
-                            </div>
-                        </div>
-                        <div class="form-group">                            
-                            {!!Form::label('CarType', 'Type of your Car', array('class' => 'control-label'))!!}
-                            <div class="{{ $errors->has('CarType') ? ' has-error' : '' }}">
-                                {{ Form::select('CarType', $CarType, null,
-                                                ['class' => "form-control"]) }}
-                                    @if ($errors->has('CarType'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('CarType') }}</strong>
                                         </span>
                                     @endif
                             </div>

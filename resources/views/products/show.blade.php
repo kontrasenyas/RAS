@@ -11,6 +11,7 @@
 
                 <div class="panel-body">
                     <div class="col-md-12">
+                    @include('partials.booking')
                         <div>
                             <img src="/uploads/productPhoto/{{ $product->Photo1 }}" style="width:150px; height:150px;" class="center-block">
                         </div>
@@ -18,7 +19,13 @@
                             <i>Title of your post: </i>{{$product->Title}}
                         </div>
                         <div class="text-center">
+                            <i>Location: </i>{{$product->Province}}
+                        </div>
+                        <div class="text-center">
                             <i>Capacity: </i>{{$product->Capacity}}
+                        </div>
+                        <div class="text-center">                
+                            <i>Car Type: </i>{{$product->ProductType}}
                         </div>
                         <div class="text-center">                
                             <i>Brand: </i>{{$product->Brand}}
@@ -33,19 +40,21 @@
                             <i>Views: </i>100
                         </div>              
                     </div>
-                    <div class="panel-body">
-                        <div class="text-center">
-                            <a href="{{route('product.edit', $product->id)}}" class="btn">Edit your Post</a>
+                    @if (Auth::user())
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <a href="{{route('product.edit', $product->id)}}" class="btn">Edit your Post</a>
+                            </div>
+                            <div class="text-center">
+                                {!!Form::open([
+                                    'method'=>'delete',
+                                    'route'=>['product.destroy', $product->id]
+                                    ])!!}                
+                                    {!!Form::submit('Delete')!!}
+                                {!!Form::close()!!}
+                            </div>
                         </div>
-                        <div class="text-center">
-                            {!!Form::open([
-                                'method'=>'delete',
-                                'route'=>['product.destroy', $product->id]
-                                ])!!}                
-                                {!!Form::submit('Delete')!!}
-                            {!!Form::close()!!}
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
