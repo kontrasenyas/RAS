@@ -11,7 +11,9 @@
 
                 <div class="panel-body">
                     <div class="col-md-12">
-                    @include('partials.booking')
+                    {{-- @if($product->EmailAddress != $user->email) --}}
+                        @include('partials.booking')
+                    {{-- @endif --}}
                         <div>
                             <img src="/uploads/productPhoto/{{ $product->Photo1 }}" style="width:150px; height:150px;" class="center-block">
                         </div>

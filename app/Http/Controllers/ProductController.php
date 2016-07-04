@@ -51,7 +51,7 @@ class ProductController extends Controller
                // return view('products.create')->with('user', $user);
         //}
         else {
-                return view('products.create');
+            return view('products.create');
         }
     }
 
@@ -117,8 +117,10 @@ class ProductController extends Controller
     public function show($id)
     {
         $product =  Product::find($id);
+        $user = Auth::user();
 
-        return view('products.show')->with('product', $product);
+        //return view('products.show')->with('product', $product);
+        return view('products.show', compact(['product', $product, 'user', $user]));
     }
 
     /**

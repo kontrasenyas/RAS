@@ -33,7 +33,8 @@
                             </div>
                         </div>
                         <input type="hidden" name="product_id" value="{{$product->id}}" />
-                        
+                        <input type="hidden" name="user_email" value="{{$user->email}}" />
+                        <input type="hidden" name="product_email" value="{{$product->EmailAddress}}" />
                 </div>
                 <div class="modal-footer">
                     {!!Form::submit('Send', ['class' => "btn btn-primary"])!!}
