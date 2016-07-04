@@ -1,7 +1,9 @@
 @if(Session::has('success'))
-	<div class="alert alert-success text-center" role="alert">
-		<strong>Success:</strong> {{ Session::get('success') }}
-	</div>
+	
+		<script>
+    			swal("Success!", "{{ Session::get('success') }}", "success")
+		</script>
+	
 @endif
 
 {{-- @if(count($errors) > 0)
@@ -14,3 +16,5 @@
 			</ul>
 	</div>
 @endif --}}
+
+

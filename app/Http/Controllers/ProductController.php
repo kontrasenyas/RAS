@@ -22,8 +22,12 @@ class ProductController extends Controller
     public function index($id = null)
     {
         $product = Product::all();        
-        
-        return view('products.index')->with('product', $product);        
+        if (Auth::check()) {
+            return view('products.index')->with('product', $product);
+        }
+        else {
+                return view('products.error');
+        }
         // if ($id == null) {
         //     return Product::orderBy('id', 'asc')->get();
         // } else {
@@ -171,7 +175,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-
+        Session::flash('success', 'You successfully updated this car!');
         //return "Sucess updating product #" . $product->id;
         return redirect()->route('product.show', compact('id', $id));
     }
@@ -187,7 +191,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $product->delete();
-
+        Session::flash('success', 'You successfully deleted this car!');
         //return "Product record successfully deleted #" . $id;
         return redirect()->route('product.index');
     }

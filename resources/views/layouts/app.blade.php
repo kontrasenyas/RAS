@@ -25,6 +25,8 @@
             margin-right: 6px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
+    <script src="/js/sweetalert.min.js"></script>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -50,7 +52,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @if (Auth::user() != '')
-                        <li><a href="{{ url('/product') }}">Product</a></li>
+                        <li><a href="{{ url('/product') }}">My Post</a></li>
                     @endif
                 </ul>
 
@@ -93,7 +95,7 @@
                     <div class="panel-body">
                         <div class="form-group col-md-12">                           
                             @foreach($CarType as $CarType_)
-                                <a href="#">{{$CarType_}}</a><br>
+                                <a href="/search?term=&CarType={{$CarType_}}&Location=&Capacity=&Price=">{{$CarType_}}</a><br>
                             @endforeach
                         </div>
                     </div>

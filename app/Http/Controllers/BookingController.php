@@ -73,6 +73,7 @@ class BookingController extends Controller
         $bookingNotification->Code = $code->uuid;
 
         $booking->save();
+        $bookingNotification->save();
 
         Session::flash('success', 'You successfully booked this car!');
         return redirect()->action('ProductController@show', ['id' => $booking->ProductID]);

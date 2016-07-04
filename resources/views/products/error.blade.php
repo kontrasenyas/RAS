@@ -10,7 +10,7 @@
                 @endsection
 
                 <div class="panel-body">
-                    <h1>Please login to add your post</h1>
+                    <h1>Please login to view this content</h1>
                 </div>
             </div>
         </div>
