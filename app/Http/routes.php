@@ -33,3 +33,4 @@ Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::resource('search', 'SearchController');
 
 Route::post('product/{id}/booking', 'BookingController@store');
+Route::get('/messages', 'MessagesController@index');

@@ -77,6 +77,11 @@
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="{{ url('/messages/')}}">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </div>

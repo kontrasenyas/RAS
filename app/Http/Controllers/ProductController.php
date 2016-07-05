@@ -11,6 +11,7 @@ use Image;
 use Auth;
 use DB;
 use Session;
+use App\User;
 
 class ProductController extends Controller
 {
@@ -117,8 +118,10 @@ class ProductController extends Controller
     public function show($id)
     {
         $product =  Product::find($id);
-        $user = Auth::user();
-
+        $user = new User();
+        if (Auth::check()) {
+            $user = Auth::user();
+        }
         //return view('products.show')->with('product', $product);
         return view('products.show', compact(['product', $product, 'user', $user]));
     }
